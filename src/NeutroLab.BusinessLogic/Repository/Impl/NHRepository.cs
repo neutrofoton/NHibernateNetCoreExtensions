@@ -5,23 +5,19 @@ namespace NeutroLab.BusinessLogic.Repository.Impl
 {
     public abstract class NHRepository
     {
-        protected ISessionFactory sessionFactory;
-        private ISession session;
-
-        public NHRepository(ISessionFactory sessionFactory)
+        public NHRepository(ISessionFactory sessionFactory, ISession session)
+            => (SessionFactory, Session) = (sessionFactory, session);
+        
+        protected ISessionFactory SessionFactory
         {
-            this.sessionFactory = sessionFactory;
+            get;
+            init;
         }
 
-        public ISession Session
+        protected ISession Session
         {
-            get
-            {
-                if (session == null || !session.IsOpen)
-                    session = sessionFactory.OpenSession();
-
-                return session;
-            }
+            get;
+            init;
         }
     }
 }

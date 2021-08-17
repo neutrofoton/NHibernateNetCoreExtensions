@@ -7,8 +7,8 @@ namespace NeutroLab.BusinessLogic.Repository.Impl
 {
     public class BookRepository : NHRepository, IBookRepository
     {
-        public BookRepository(ISessionFactory sessionFactory)
-            : base(sessionFactory)
+        public BookRepository(ISessionFactory sessionFactory, ISession session)
+            : base(sessionFactory, session)
         {
         }
 
